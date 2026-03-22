@@ -1,0 +1,10 @@
+services:
+  db:
+    image: leogloriainfnet/postgres-tp2-spring:1.0
+    container_name: lucas_ssouza_tp2
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=appuser
+      - POSTGRES_PASSWORD=12345
+    ports:
+      - "5432:5432"
