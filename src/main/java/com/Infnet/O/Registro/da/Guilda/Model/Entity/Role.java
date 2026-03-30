@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "roles" , uniqueConstraints = {
+@Table(name = "roles" , schema = "audit",uniqueConstraints = {
         @UniqueConstraint(name = "uk_organizacao_nome" , columnNames = {"organizacao_id" , "nome"})
 })
 @Getter
@@ -30,7 +30,6 @@ private Organizacao organizacao;
 
 @Column(name = "nome" , nullable = false)
 private String nome;
-
 
 
 @Column(name = "descricao" , nullable = false)

@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name = "organizacoes")
+@Table(name = "organizacoes" , schema = "audit")
 @Getter @Setter @NoArgsConstructor @AllArgsConstructor
 public class Organizacao {
 
@@ -29,6 +29,4 @@ public class Organizacao {
 
     @OneToMany(mappedBy = "organizacao")
     private List<Usuario> usuarios;
-
-
 }

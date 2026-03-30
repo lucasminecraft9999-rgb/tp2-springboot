@@ -15,7 +15,7 @@ distinguir ativos dos expulsos
 
 registrar classes e níveis com precisão
 
-e manter, quando existente, o vínculo entre um aventureiro e seu companheiro leal
+e manter, quando existente, o vínculo entre um aventureiroDTOCLASS e seu companheiroDTO leal
 
 O Conselho impôs regras claras:
 
@@ -38,14 +38,14 @@ Erros de registro custam vidas em campo.
 Conceitos do domínio
 
 Aventureiro
-Um aventureiro possui obrigatoriamente:
+Um aventureiroDTOCLASS possui obrigatoriamente:
 
 id — identificador único, gerado pelo sistema
 nome
 classe — valor obrigatório, pertencente a um conjunto fixo
 nível
 ativo
-companheiro — opcional
+companheiroDTO — opcional
 Classes permitidas
 O campo classe deve aceitar exclusivamente um dos valores abaixo:
 
@@ -57,10 +57,10 @@ LADINO
 Qualquer outro valor deve ser tratado como inválido.
 
 Companheiro (composição)
-O companheiro existe apenas como parte do aventureiro.
+O companheiroDTO existe apenas como parte do aventureiroDTOCLASS.
 Não pode existir isoladamente nem ser compartilhado entre aventureiros.
 
-Um companheiro possui:
+Um companheiroDTO possui:
 
 nome
 especie — valor obrigatório, pertencente a um conjunto fixo
@@ -74,20 +74,20 @@ GOLEM
 DRAGAO_MINIATURA
 Regras de negócio
 O id é sempre gerado pelo sistema.
-O nome do aventureiro é obrigatório e não pode ser vazio.
+O nome do aventureiroDTOCLASS é obrigatório e não pode ser vazio.
 A classe deve pertencer ao conjunto permitido.
 O nível deve ser maior ou igual a 1.
-Um aventureiro recém-criado inicia obrigatoriamente como ativo.
-Um aventureiro inativo continua existindo no sistema.
-Caso exista companheiro:
+Um aventureiroDTOCLASS recém-criado inicia obrigatoriamente como ativo.
+Um aventureiroDTOCLASS inativo continua existindo no sistema.
+Caso exista companheiroDTO:
 nome é obrigatório
 especie deve pertencer ao conjunto permitido
 lealdade deve estar entre 0 e 100
 Operações sobre recursos inexistentes devem indicar que o recurso não foi encontrado.
 Solicitações com dados inválidos devem ser rejeitadas como inválidas, informando os motivos.
 Operações disponíveis
-1) Registrar aventureiro
-Registra um novo aventureiro na guilda.
+1) Registrar aventureiroDTOCLASS
+Registra um novo aventureiroDTOCLASS na guilda.
 
 O cliente fornece:
 
@@ -97,8 +97,8 @@ nível
 O sistema:
 
 gera o id
-define o aventureiro como ativo
-não permite definir companheiro nessa operação
+define o aventureiroDTOCLASS como ativo
+não permite definir companheiroDTO nessa operação
 O sistema deve indicar claramente que um novo recurso foi criado.
 
 2) Listar aventureiros (com filtros e paginação)
@@ -123,7 +123,7 @@ page não pode ser negativo
 size deve estar entre 1 e 50
 A resposta deve conter:
 
-lista de aventureiros em formato de resumo, sem informações de companheiro
+lista de aventureiros em formato de resumo, sem informações de companheiroDTO
 metadados de paginação retornados via headers:
 Headers obrigatórios:
 
@@ -135,12 +135,12 @@ Caso a página solicitada não exista, a resposta deve conter:
 
 lista vazia
 headers de paginação corretos
-3) Consultar aventureiro por id
-Retorna todas as informações do aventureiro, incluindo o companheiro (se existir).
+3) Consultar aventureiroDTOCLASS por id
+Retorna todas as informações do aventureiroDTOCLASS, incluindo o companheiroDTO (se existir).
 
 Caso o id informado não exista, o sistema deve indicar recurso não encontrado.
 
-4) Atualizar dados do aventureiro
+4) Atualizar dados do aventureiroDTOCLASS
 Permite atualizar exclusivamente:
 
 nome
@@ -150,39 +150,39 @@ Não é permitido:
 
 alterar id
 alterar estado ativo
-alterar companheiro
+alterar companheiroDTO
 Dados inválidos devem ser rejeitados.
 Caso o recurso não exista, deve ser indicado não encontrado.
 
 5) Encerrar vínculo com a guilda
-Altera o estado do aventureiro para ativo = false.
+Altera o estado do aventureiroDTOCLASS para ativo = false.
 
-O aventureiro permanece registrado no sistema.
+O aventureiroDTOCLASS permanece registrado no sistema.
 
 6) Recrutar novamente
-Altera o estado do aventureiro para ativo = true.
+Altera o estado do aventureiroDTOCLASS para ativo = true.
 
 Composição — gerenciamento do Companheiro
-7) Definir ou substituir companheiro
-Cria ou substitui o companheiro associado a um aventureiro.
+7) Definir ou substituir companheiroDTO
+Cria ou substitui o companheiroDTO associado a um aventureiroDTOCLASS.
 
 O cliente fornece:
 
 nome
 especie
 lealdade
-Após a operação, o aventureiro passa a possuir exatamente um companheiro.
+Após a operação, o aventureiroDTOCLASS passa a possuir exatamente um companheiroDTO.
 
-Caso o aventureiro não exista, deve ser indicado não encontrado.
-Caso os dados do companheiro sejam inválidos, a solicitação deve ser rejeitada.
+Caso o aventureiroDTOCLASS não exista, deve ser indicado não encontrado.
+Caso os dados do companheiroDTO sejam inválidos, a solicitação deve ser rejeitada.
 
-8) Remover companheiro
-Remove o companheiro associado ao aventureiro.
+8) Remover companheiroDTO
+Remove o companheiroDTO associado ao aventureiroDTOCLASS.
 
 Após a operação:
 
-o aventureiro continua existindo
-o companheiro deixa de existir
+o aventureiroDTOCLASS continua existindo
+o companheiroDTO deixa de existir
 Paginação e ordenação
 Todas as listagens devem ser retornadas em ordem crescente de id.
 A paginação deve ser aplicada após filtros.
