@@ -205,3 +205,7 @@ Exemplo:
 ]
 
 }
+
+
+    // adicionar aventureiro / companheiro / missao / participacao_em_missao
+    
