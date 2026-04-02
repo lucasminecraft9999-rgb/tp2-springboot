@@ -11,14 +11,13 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 
 @Entity
 @Table(name = "aventureiro" , schema = "aventura")
 @AllArgsConstructor@Setter@Getter@NoArgsConstructor
-@ToString
+@Builder
 public class Aventureiro {
 
     @Id

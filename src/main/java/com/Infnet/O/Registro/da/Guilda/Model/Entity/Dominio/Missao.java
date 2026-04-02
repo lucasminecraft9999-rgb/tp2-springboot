@@ -14,7 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 @Getter
 @NoArgsConstructor
-@ToString
+@Builder
 public class Missao {
 
 @Id
@@ -27,7 +27,6 @@ private Organizacao organizacao;
 
 @Column(name = "titulo" , length = 150 , nullable = false)
 private String titulo;
-
 
 public enum NivelPerigo {
 BAIXO, MEDIO, ALTO , CRITICO

@@ -1,4 +1,4 @@
-package com.Infnet.O.Registro.da.Guilda.repository;
+package com.Infnet.O.Registro.da.Guilda.repository.usuario;
 
 import com.Infnet.O.Registro.da.Guilda.Model.Entity.Usuario;
 import org.springframework.data.jpa.repository.JpaRepository;

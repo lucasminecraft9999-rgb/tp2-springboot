@@ -17,7 +17,7 @@ import java.util.Arrays;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@ToString
+@Builder
 public class Companheiro {
 
 @Id
