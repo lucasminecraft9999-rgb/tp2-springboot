@@ -877,24 +877,52 @@ Além disso, foi utilizado updatable = false em campos de data, assegurando que 
 ## Querys
 aqui mostrarei que as tabelas estao sendo criadas do schema aventura e audit
 
-primeiro mostrarei do schema audit
+primeiro mostrarei do schema 
 
+### audit
 
 Usuario:
-![[usuario.png]]
+
+![resultado](imagens/usuario.png)
+
 
 Organizacao:
-![[organizacao.png]]
+
+![resultado](imagens/organizacao.png)
 
 
 Role:
-![[Roles.png]]
+
+![resultado](imagens/Roles.png)
+
 
 Permission:
-![[permission.png]]
+
+![resultado](imagens/permission.png)
+
 
 Auditoria:
-![[Auditoria.png]]
+
+![resultado](imagens/Auditoria.png)
+
+### aventura
+
+Aventureiro:
+
+![resultado](imagens/Aventureiro.png)
+
+Companheiro
+
+![resultado](imagens/Companheiro.png)
+
+Missao:
+
+![resultado](imagens/Missao.png)
+
+Participacao_em_missao
+
+![resultado](imagens/Participacao_em_missao.png)
+
 
 ---
 ## Tests
