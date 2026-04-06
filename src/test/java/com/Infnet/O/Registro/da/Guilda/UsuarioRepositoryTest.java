@@ -1,8 +1,8 @@
 package com.Infnet.O.Registro.da.Guilda;
 import com.Infnet.O.Registro.da.Guilda.Model.Entity.Usuario;
 import com.Infnet.O.Registro.da.Guilda.Service.ServiceAventureiro;
+import com.Infnet.O.Registro.da.Guilda.repository.CompanheiroRepository;
 import com.Infnet.O.Registro.da.Guilda.repository.aventureiro.AventureiroRepository;
-import com.Infnet.O.Registro.da.Guilda.repository.companheiro.CompanheiroRepository;
 import com.Infnet.O.Registro.da.Guilda.repository.organizacao.OrganizacaoRepository;
 import com.Infnet.O.Registro.da.Guilda.repository.usuario.UsuarioRepository;
 import jakarta.transaction.Transactional;
@@ -27,19 +27,6 @@ public class UsuarioRepositoryTest {
     @Autowired
     private UsuarioRepository usuarioRepository;
 
-    @Autowired
-    private AventureiroRepository aventureiroRepository;
-
-    @Autowired
-    private OrganizacaoRepository organizacaoRepository;
-    @Autowired
-    private CompanheiroRepository companheiroRepository;
-
-
-
-
-
-
 
     // estou testando se o join esta conseguindo capturar os roles
     @Test
@@ -63,16 +50,4 @@ public class UsuarioRepositoryTest {
             });
         });
     }
-
-
-
-
-
-
-
-
-
-
-
-
 }

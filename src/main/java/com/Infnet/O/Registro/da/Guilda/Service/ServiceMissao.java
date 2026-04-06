@@ -9,10 +9,12 @@ import com.Infnet.O.Registro.da.Guilda.Model.Entity.Dominio.ParticipacaoEmMissao
 import com.Infnet.O.Registro.da.Guilda.repository.missao.MissaoRepository;
 import com.Infnet.O.Registro.da.Guilda.repository.participacao.ParticipacaoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cglib.core.Local;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RequiredArgsConstructor

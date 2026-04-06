@@ -15,8 +15,9 @@ import com.Infnet.O.Registro.da.Guilda.Model.Entity.Dominio.ParticipacaoEmMissao
 import com.Infnet.O.Registro.da.Guilda.Model.Entity.Organizacao;
 import com.Infnet.O.Registro.da.Guilda.Model.Entity.Usuario;
 import com.Infnet.O.Registro.da.Guilda.Service.ServiceMissao;
+import com.Infnet.O.Registro.da.Guilda.repository.CompanheiroRepository;
 import com.Infnet.O.Registro.da.Guilda.repository.aventureiro.AventureiroRepository;
-import com.Infnet.O.Registro.da.Guilda.repository.companheiro.CompanheiroRepository;
+
 import com.Infnet.O.Registro.da.Guilda.repository.missao.MissaoRepository;
 import com.Infnet.O.Registro.da.Guilda.repository.organizacao.OrganizacaoRepository;
 import com.Infnet.O.Registro.da.Guilda.repository.participacao.ParticipacaoRepository;
@@ -162,7 +163,6 @@ public class ServiceAventureiroTest {
 
         System.out.println("Id: " + aventureiros.aventureiro().id() + " | Nome: " + aventureiros.aventureiro().nome() + " | Classe: " + aventureiros.aventureiro().classe() + " | Nivel: " + aventureiros.aventureiro().nivel() + " | Ativo: " + aventureiros.aventureiro().ativo() + " | Companheiro: " + aventureiros.nomeCompanheiro() + " | Missao: " + aventureiros.ultimaMissao());
     }
-
 
 }
 

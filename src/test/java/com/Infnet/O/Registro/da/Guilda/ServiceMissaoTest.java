@@ -10,8 +10,8 @@ import com.Infnet.O.Registro.da.Guilda.Model.Entity.Dominio.ParticipacaoEmMissao
 import com.Infnet.O.Registro.da.Guilda.Model.Entity.Organizacao;
 import com.Infnet.O.Registro.da.Guilda.Model.Entity.Usuario;
 import com.Infnet.O.Registro.da.Guilda.Service.ServiceMissao;
+import com.Infnet.O.Registro.da.Guilda.repository.CompanheiroRepository;
 import com.Infnet.O.Registro.da.Guilda.repository.aventureiro.AventureiroRepository;
-import com.Infnet.O.Registro.da.Guilda.repository.companheiro.CompanheiroRepository;
 import com.Infnet.O.Registro.da.Guilda.repository.missao.MissaoRepository;
 import com.Infnet.O.Registro.da.Guilda.repository.organizacao.OrganizacaoRepository;
 import com.Infnet.O.Registro.da.Guilda.repository.participacao.ParticipacaoRepository;
@@ -83,7 +83,7 @@ public class ServiceMissaoTest {
         // criar 4 participacao da missao para aventureiroLucas
         for (int i = 1; i <= 4; i++){
 
-            Missao missao = missaoRepository.save(Missao.builder().dataInicio(LocalDateTime.now()).dataTermino(LocalDateTime.now()).titulo("Missao " + i).nivelPerigo(Missao.NivelPerigo.CRITICO).status(Missao.Status.EM_ANDAMENTO).organizacao(orgExistente).build());
+            Missao missao = missaoRepository.save(Missao.builder().dataCriacao(LocalDateTime.now()).dataInicio(LocalDateTime.now()).dataTermino(LocalDateTime.now()).titulo("Missao " + i).nivelPerigo(Missao.NivelPerigo.CRITICO).status(Missao.Status.EM_ANDAMENTO).organizacao(orgExistente).build());
             this.missaoId = missao.getId();
             participacaoRepository.save(ParticipacaoEmMissao.builder().dataDeRegistro(LocalDateTime.now()).destaqueMVP(true).papelNaMissao(ParticipacaoEmMissao.PapelNaMissao.LIDER).recompensaEmOuro(500L).aventureiro(aventureiroLucas).missao(missao).organizacao(orgExistente).build());
 
@@ -124,20 +124,25 @@ public class ServiceMissaoTest {
     }
 
 
-
     @Test
     void buscarMissao(){
 
         LocalDateTime dataInicio = LocalDateTime.of(2026, 4, 1, 12, 0);
         LocalDateTime dataFim = LocalDateTime.now();
 
-        FiltroGlobal filtro = new FiltroGlobal(null , null , null , Missao.Status.EM_ANDAMENTO , Missao.NivelPerigo.CRITICO , dataInicio  , dataFim);
+        FiltroGlobal filtro = new FiltroGlobal(null , null , null , Missao.Status.EM_ANDAMENTO , Missao.NivelPerigo.CRITICO , dataInicio , dataFim);
 
-        MissaoDTO missaoDTO = serviceMissao.buscarMissao(filtro , PageRequest.of(0, 10)).getContent().get(0);
+        Page<MissaoDTO> missaoDTO = serviceMissao.buscarMissao(filtro, PageRequest.of(0, 10));
 
-        assertThat(missaoDTO).isNotNull();
+        assertThat(missaoDTO.getContent()).isNotEmpty();
 
-        System.out.println("Missao: " + missaoDTO.titulo() + " | Status: " + missaoDTO.status() + " | NivelPerigo: " + missaoDTO.nivelPerigo());
+
+        missaoDTO.getContent().forEach(m -> {
+                    System.out.println("Missao: " + m.titulo() + " | Status: " + m.status() + " | NivelPerigo: " + m.nivelPerigo());
+                    System.out.println("Data de inicio: " + m.dataInicio() + " | Data de termino: " + m.dataTermino());
+                }
+        );
+
     }
 
 

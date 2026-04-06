@@ -8,8 +8,6 @@ import com.Infnet.O.Registro.da.Guilda.Model.Entity.Dominio.Companheiro;
 
 import com.Infnet.O.Registro.da.Guilda.Model.Entity.Dominio.ParticipacaoEmMissao;
 import com.Infnet.O.Registro.da.Guilda.repository.aventureiro.AventureiroRepository;
-import com.Infnet.O.Registro.da.Guilda.repository.companheiro.CompanheiroRepository;
-import com.Infnet.O.Registro.da.Guilda.repository.missao.MissaoRepository;
 import com.Infnet.O.Registro.da.Guilda.repository.participacao.ParticipacaoRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -77,6 +75,5 @@ public class ServiceAventureiro {
             );
 
     }
-
 
     }
